@@ -29,14 +29,31 @@ namespace MyDefence
             // targetPosition 판정
             float distance = Vector3.Distance(targetPosition, this.transform.position);
 
-            targetPosition = WayPoints.wayPoints[0].position;
+            
             if (distance <= 0.1f)
             {
-                targetPosition = WayPoints.wayPoints[1].position;
+                
+                GetNextTargetPosition();
+                
             }
 
 
 
         }
+        // 다음 타겟포지션을 얻어오기 
+        void GetNextTargetPosition()
+        {
+            wayPointIndex++;
+            if (wayPointIndex == 8)
+            {
+                //Debug.Log("종점 도착");
+                Destroy(this.gameObject);
+                return;
+            }
+            
+            //Debug.Log($"wayPointIndex: {wayPointIndex}");
+            targetPosition = WayPoints.wayPoints[wayPointIndex].position;
+        }
     }
+
 }
