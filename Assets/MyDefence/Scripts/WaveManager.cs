@@ -60,7 +60,7 @@ namespace MyDefence
         // 웨이브
         IEnumerator SpawnWave()
         {
-            waveCount++;
+            
            // Debug.Log($"waveCount: {waveCount}");
 
             for (int i = 0; i <= waveCount; i++)
@@ -68,7 +68,7 @@ namespace MyDefence
                 SpawnEnemy();
                 yield return new WaitForSeconds(0.5f);
             }
-            
+            waveCount++;
         }
     }
 }
